@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/transportation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="onClick"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/transportation_car"
+            android:layout_width="@dimen/radio_button_size"
+            android:layout_height="@dimen/radio_button_size"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_car"
+            android:button="@null"
+            android:checked="true"
+            android:contentDescription="car"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/transportation_bus"
+            android:layout_width="@dimen/radio_button_size"
+            android:layout_height="@dimen/radio_button_size"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_bus"
+            android:button="@null"
+            android:contentDescription="bus"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/transportation_train"
+            android:layout_width="@dimen/radio_button_size"
+            android:layout_height="@dimen/radio_button_size"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_train"
+            android:button="@null"
+            android:contentDescription="train"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/transportation_metro"
+            android:layout_width="@dimen/radio_button_size"
+            android:layout_height="@dimen/radio_button_size"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_metro"
+            android:button="@null"
+            android:contentDescription="metro"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/transportation_bike"
+            android:layout_width="@dimen/radio_button_size"
+            android:layout_height="@dimen/radio_button_size"
+            android:layout_margin="1dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_bike"
+            android:button="@null"
+            android:contentDescription="bike"
+            android:text="" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right|center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start the bumpy ride"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="18dp" />
+
+        <ToggleButton
+            android:id="@+id/toggleBumpy"
+            style="@style/ToggleAppTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:contentDescription="toggle Bumpy on/of button"
+            android:onClick="onClick" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/graph2"
+        android:layout_width="fill_parent"
+        android:layout_height="250dip"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <fragment
+  android:id="@+id/map"
+  android:layout_width="match_parent"
+  android:layout_height="150dip"
+  class="com.google.android.gms.maps.SupportMapFragment"/>
+    
+    <RelativeLayout
+        android:id="@+id/main_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/label_lat_lng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/latlng"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/lat_lng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/label_lat_lng"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/label_lat_lng"
+            android:textIsSelectable="true"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/label_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/label_lat_lng"
+            android:text="@string/address"
+            android:textSize="20sp" />
+
+        <ProgressBar
+            android:id="@+id/address_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lat_lng"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/label_address"
+            android:layout_below="@+id/lat_lng"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/label_address"
+            android:textIsSelectable="true"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_connection_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/address"
+            android:text="@string/unknown"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/text_connection_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/text_connection_status"
+            android:text="@string/unknown"
+            android:textIsSelectable="true" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+             android:layout_below="@+id/text_connection_state"
+             android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical" >
+
+            <Button
+                android:id="@+id/get_location_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:onClick="getLocation"
+                android:text="@string/get_location" />
+
+            <Button
+                android:id="@+id/start_updates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/get_address_button"
+                android:layout_centerHorizontal="true"
+                android:onClick="startUpdates"
+                android:text="@string/start_updates" />
+
+            <Button
+                android:id="@+id/get_address_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/get_location_button"
+                android:layout_centerHorizontal="true"
+                android:onClick="getAddress"
+                android:text="@string/get_address" />
+
+            <Button
+                android:id="@+id/stop_updates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_below="@+id/start_updates"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="stopUpdates"
+                android:text="@string/stop_updates" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

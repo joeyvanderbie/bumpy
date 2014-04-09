@@ -1,7 +1,6 @@
-package com.jjoe64.graphviewdemos;
+package com.vanderbie.bumpy.graphview;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
@@ -10,43 +9,53 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
+import com.vanderbie.bumpy.R;
 
-public class SimpleGraph extends Activity {
+public class AdvancedGraph extends Activity {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.graphs);
 
-		// init example series data
-		GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
-				new GraphViewData(1, 2.0d)
-				, new GraphViewData(2, 1.5d)
-				, new GraphViewData(2.5, 3.0d) // another frequency
-				, new GraphViewData(3, 2.5d)
-				, new GraphViewData(4, 1.0d)
-				, new GraphViewData(5, 3.0d)
-		});
-
+		// draw sin curve
+		int num = 150;
+		GraphViewData[] data = new GraphViewData[num];
+		double v=0;
+		for (int i=0; i<num; i++) {
+			v += 0.2;
+			data[i] = new GraphViewData(i, Math.sin(v));
+		}
 		// graph with dynamically genereated horizontal and vertical labels
 		GraphView graphView;
 		if (getIntent().getStringExtra("type").equals("bar")) {
 			graphView = new BarGraphView(
-					this // context
-					, "GraphViewDemo" // heading
+					this
+					, "GraphViewDemo"
 			);
 		} else {
 			graphView = new LineGraphView(
-					this // context
-					, "GraphViewDemo" // heading
+					this
+					, "GraphViewDemo"
 			);
 		}
-		graphView.addSeries(exampleSeries); // data
-
+		// add data
+		graphView.addSeries(new GraphViewSeries(data));
+		// set view port, start=2, size=40
+		graphView.setViewPort(2, 40);
+		graphView.setScrollable(true);
 		LinearLayout layout = (LinearLayout) findViewById(R.id.graph1);
 		layout.addView(graphView);
 
-		// graph with custom labels and drawBackground
+		// draw random curve
+		num = 1000;
+		data = new GraphViewData[num];
+		v=0;
+		for (int i=0; i<num; i++) {
+			v += 0.2;
+			data[i] = new GraphViewData(i, Math.sin(Math.random()*v));
+		}
+		// graph with dynamically genereated horizontal and vertical labels
 		if (getIntent().getStringExtra("type").equals("bar")) {
 			graphView = new BarGraphView(
 					this
@@ -58,13 +67,14 @@ public class SimpleGraph extends Activity {
 					, "GraphViewDemo"
 			);
 			((LineGraphView) graphView).setDrawBackground(true);
-			((LineGraphView) graphView).setBackgroundColor(Color.rgb(80, 30, 30));
 		}
-		// custom static labels
-		graphView.setHorizontalLabels(new String[] {"2 days ago", "yesterday", "today", "tomorrow"});
-		graphView.setVerticalLabels(new String[] {"high", "middle", "low"});
-		graphView.addSeries(exampleSeries); // data
-
+		// add data
+		graphView.addSeries(new GraphViewSeries(data));
+		// set view port, start=2, size=10
+		graphView.setViewPort(2, 10);
+		graphView.setScalable(true);
+		// set manual Y axis bounds
+		graphView.setManualYAxisBounds(2, -1);
 		layout = (LinearLayout) findViewById(R.id.graph2);
 		layout.addView(graphView);
 	}

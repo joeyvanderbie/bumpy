@@ -1,4 +1,4 @@
-package com.jjoe64.graphviewdemos;
+package com.vanderbie.bumpy.graphview;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,6 +15,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
+import com.vanderbie.bumpy.R;
 
 public class CustomLabelFormatterActivity extends Activity {
 	/** Called when the activity is first created. */

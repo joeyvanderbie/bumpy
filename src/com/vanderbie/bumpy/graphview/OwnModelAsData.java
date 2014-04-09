@@ -1,4 +1,4 @@
-package com.jjoe64.graphviewdemos;
+package com.vanderbie.bumpy.graphview;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -10,6 +10,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewDataInterface;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
+import com.vanderbie.bumpy.R;
 
 public class OwnModelAsData extends Activity {
 	static public class ServerTemperature implements GraphViewDataInterface {

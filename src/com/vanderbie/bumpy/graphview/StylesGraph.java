@@ -1,4 +1,4 @@
-package com.jjoe64.graphviewdemos;
+package com.vanderbie.bumpy.graphview;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -14,6 +14,7 @@ import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
 import com.jjoe64.graphview.LineGraphView;
 import com.jjoe64.graphview.ValueDependentColor;
+import com.vanderbie.bumpy.R;
 
 public class StylesGraph extends Activity {
 	private final Handler mHandler = new Handler();

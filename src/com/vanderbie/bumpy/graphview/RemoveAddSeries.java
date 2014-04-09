@@ -1,4 +1,4 @@
-package com.jjoe64.graphviewdemos;
+package com.vanderbie.bumpy.graphview;
 
 import java.util.Random;
 
@@ -13,6 +13,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
+import com.vanderbie.bumpy.R;
 
 public class RemoveAddSeries extends Activity {
 	private GraphView graphView;

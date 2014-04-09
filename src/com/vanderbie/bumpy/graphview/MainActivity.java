@@ -1,4 +1,4 @@
-package com.jjoe64.graphviewdemos;
+package com.vanderbie.bumpy.graphview;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import com.vanderbie.bumpy.BumpyMainFragmentActivity;
+import com.vanderbie.bumpy.R;
 
 public class MainActivity extends Activity {
 	@Override
@@ -36,7 +39,7 @@ public class MainActivity extends Activity {
 		((Button) findViewById(R.id.btn_realtime)).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startGraphActivity(RealtimeGraph.class);
+				startGraphActivity(BumpyMainFragmentActivity.class);
 			}
 		});
 		((Button) findViewById(R.id.btn_styles)).setOnClickListener(new OnClickListener() {
